@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# Yemen Store Admin Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+لوحة تحكم إدارية متطورة لمتجر اليمن، مصممة باللغة العربية مع دعم كامل للـ RTL.
 
-## Available Scripts
+## المميزات
 
-In the project directory, you can run:
+### 🎨 التصميم
+- **تصميم عصري** مع خلفية سوداء وتدرجات خضراء وزرقاء
+- **دعم كامل للعربية** مع اتجاه RTL
+- **تصميم متجاوب** للجوال والتابلت والديسكتوب
+- **أيقونات وتأثيرات بصرية** أنيقة
 
-### `npm start`
+### 📱 الصفحات المتاحة
+1. **صفحة تسجيل الدخول** - مع أيقونة متجر اليمن
+2. **إدارة المنتجات** - مع البحث والفلترة
+3. **إدارة الطلبات** - مع حالات ملونة
+4. **إدارة الفئات** - مع بطاقات تفاعلية
+5. **إدارة المستخدمين** - مع أدوار وحالات
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🔧 الميزات التقنية
+- **شريط جانبي قابل للطي** على الجوال
+- **بحث وفلترة متقدمة** في جميع الصفحات
+- **جداول تفاعلية** مع تأثيرات hover
+- **أزرار متدرجة** مع تأثيرات بصرية
+- **تصميم متجاوب** للجميع الأجهزة
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## متطلبات التشغيل
 
-### `npm test`
+- Node.js (الإصدار 14 أو أحدث)
+- npm أو yarn
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## طريقة التشغيل
 
-### `npm run build`
+### 1. تثبيت المتطلبات
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. تشغيل التطبيق في وضع التطوير
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+سيتم فتح التطبيق تلقائياً على `http://localhost:3000`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. بناء التطبيق للإنتاج
+```bash
+npm run build
+```
 
-### `npm run eject`
+### 4. تشغيل الاختبارات
+```bash
+npm test
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## بيانات تسجيل الدخول
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **اسم المستخدم:** admin
+- **كلمة المرور:** 123456
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## هيكل المشروع
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+src/
+├── components/
+│   ├── DashboardLayout.js    # تخطيط لوحة التحكم
+│   └── Sidebar.js           # الشريط الجانبي
+├── pages/
+│   ├── LoginPage.js         # صفحة تسجيل الدخول
+│   ├── ProductsPage.js      # إدارة المنتجات
+│   ├── OrdersPage.js        # إدارة الطلبات
+│   ├── CategoriesPage.js    # إدارة الفئات
+│   └── UsersPage.js         # إدارة المستخدمين
+├── App.js                   # المكون الرئيسي
+├── index.js                 # نقطة البداية
+└── index.css                # الأنماط العامة
+```
 
-## Learn More
+## التقنيات المستخدمة
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **React.js** - إطار العمل الرئيسي
+- **React Router** - التنقل بين الصفحات
+- **CSS3** - التصميم والأنماط
+- **JavaScript ES6+** - البرمجة
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## الميزات المستقبلية
 
-### Code Splitting
+- [ ] إضافة نظام مصادقة متقدم
+- [ ] ربط مع API حقيقي
+- [ ] إضافة رسوم بيانية وإحصائيات
+- [ ] إضافة نظام إشعارات
+- [ ] إضافة وضع الطباعة
+- [ ] إضافة دعم للسمات المتعددة
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## المساهمة
 
-### Analyzing the Bundle Size
+نرحب بالمساهمات! يرجى إنشاء fork للمشروع وإرسال pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## الترخيص
 
-### Making a Progressive Web App
+هذا المشروع مرخص تحت رخصة MIT.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## الدعم
 
-### Advanced Configuration
+لأي استفسارات أو مشاكل، يرجى فتح issue في GitHub.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**تم تطوير هذا المشروع بـ ❤️ لـ Yemen Store**
