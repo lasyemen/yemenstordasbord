@@ -184,98 +184,54 @@ export default function ProductsPage() {
         />
       )}
 
-      <div style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginBottom: "30px",
-        flexWrap: "wrap",
-        gap: "15px"
-      }}>
+      {/* Page Header */}
+      <div className="page-header d-flex justify-between align-center flex-wrap gap-15 mb-30">
         <h1 style={{
           color: "#fff",
           fontSize: "28px",
-          margin: 0
+          margin: 0,
+          fontWeight: "700"
         }}>
           المنتجات
         </h1>
         <button 
           onClick={handleAddProduct}
-          className="add-product-btn"
+          className="modern-button"
           style={{
-            background: "linear-gradient(135deg, #32CD32, #87CEEB)",
-            color: "#000",
-            border: "none",
-            padding: "15px 30px",
-            borderRadius: "12px",
-            fontWeight: "bold",
-            fontSize: "16px",
-            cursor: "pointer",
-            transition: "all 0.3s ease",
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            boxShadow: "0 4px 15px rgba(50, 205, 50, 0.3)",
             minWidth: "200px",
-            justifyContent: "center",
-            position: "relative",
-            overflow: "hidden"
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.transform = "translateY(-2px)";
-            e.target.style.boxShadow = "0 6px 20px rgba(50, 205, 50, 0.4)";
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.transform = "translateY(0)";
-            e.target.style.boxShadow = "0 4px 15px rgba(50, 205, 50, 0.3)";
-          }}
-          onMouseDown={(e) => {
-            e.target.style.transform = "translateY(0)";
-            e.target.style.boxShadow = "0 2px 8px rgba(50, 205, 50, 0.3)";
-          }}
-          onMouseUp={(e) => {
-            e.target.style.transform = "translateY(-2px)";
-            e.target.style.boxShadow = "0 6px 20px rgba(50, 205, 50, 0.4)";
+            justifyContent: "center"
           }}
         >
-          <span style={{ 
-            fontSize: "20px",
-            fontWeight: "bold"
-          }}>+</span>
-          <span>إضافة منتج جديد</span>
-          <div style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
-            opacity: 0,
-            transition: "opacity 0.3s ease"
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.opacity = "1";
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.opacity = "0";
-          }}
-          ></div>
+          <span style={{ fontSize: "20px", fontWeight: "bold" }}>+</span>
+          إضافة منتج جديد
         </button>
       </div>
 
+      {/* Statistics Cards */}
+      <div className="responsive-grid mb-30">
+        <div className="modern-card">
+          <h3 style={{ margin: "0 0 10px 0", fontSize: "14px", opacity: 0.8 }}>إجمالي المنتجات</h3>
+          <h2 style={{ margin: "10px 0", fontSize: "32px", fontWeight: "bold", color: "#32CD32" }}>
+            {products.length}
+          </h2>
+        </div>
+        <div className="modern-card">
+          <h3 style={{ margin: "0 0 10px 0", fontSize: "14px", opacity: 0.8 }}>المنتجات المتوفرة</h3>
+          <h2 style={{ margin: "10px 0", fontSize: "32px", fontWeight: "bold", color: "#87CEEB" }}>
+            {products.filter(p => p.stock > 0).length}
+          </h2>
+        </div>
+        <div className="modern-card">
+          <h3 style={{ margin: "0 0 10px 0", fontSize: "14px", opacity: 0.8 }}>المنتجات النفاذة</h3>
+          <h2 style={{ margin: "10px 0", fontSize: "32px", fontWeight: "bold", color: "#ffa500" }}>
+            {products.filter(p => p.stock === 0).length}
+          </h2>
+        </div>
+      </div>
+
       {/* Search and Filter Section */}
-      <div style={{
-        background: "rgba(255, 255, 255, 0.05)",
-        borderRadius: "15px",
-        padding: "20px",
-        marginBottom: "20px",
-        border: "1px solid rgba(255, 255, 255, 0.1)"
-      }}>
-        <div style={{
-          display: "flex",
-          gap: "15px",
-          flexWrap: "wrap"
-        }}>
+      <div className="modern-card mb-20">
+        <div className="search-filter-container">
           {/* Search Input */}
           <div style={{ flex: 1, minWidth: "200px" }}>
             <input
@@ -283,17 +239,7 @@ export default function ProductsPage() {
               placeholder="البحث في المنتجات..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "12px 15px",
-                border: "2px solid",
-                borderImage: "linear-gradient(135deg, #32CD32, #87CEEB) 1",
-                borderRadius: "8px",
-                background: "transparent",
-                color: "#fff",
-                fontSize: "14px",
-                textAlign: "right"
-              }}
+              className="modern-input"
             />
           </div>
 
@@ -302,17 +248,7 @@ export default function ProductsPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "12px 15px",
-                border: "2px solid",
-                borderImage: "linear-gradient(135deg, #32CD32, #87CEEB) 1",
-                borderRadius: "8px",
-                background: "transparent",
-                color: "#fff",
-                fontSize: "14px",
-                textAlign: "right"
-              }}
+              className="modern-input"
             >
               {categories.map(category => (
                 <option key={category} value={category} style={{ background: "#000", color: "#fff" }}>
@@ -335,253 +271,115 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      <div style={{
-        background: "rgba(255, 255, 255, 0.05)",
-        borderRadius: "15px",
-        padding: "25px",
-        border: "1px solid rgba(255, 255, 255, 0.1)"
-      }}>
-        {/* Quick Add Button */}
-        <div style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "20px",
-          paddingBottom: "15px",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)"
-        }}>
-          <h3 style={{
-            color: "#fff",
-            margin: 0,
-            fontSize: "18px"
-          }}>
-            قائمة المنتجات
-          </h3>
-          <button 
-            onClick={handleAddProduct}
-            className="quick-add-btn"
-            style={{
-              background: "linear-gradient(135deg, #32CD32, #87CEEB)",
-              color: "#000",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: "8px",
-              fontWeight: "bold",
-              fontSize: "14px",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px"
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = "translateY(-1px)";
-              e.target.style.boxShadow = "0 4px 12px rgba(50, 205, 50, 0.3)";
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = "translateY(0)";
-              e.target.style.boxShadow = "none";
-            }}
-          >
-            <span style={{ fontSize: "16px" }}>+</span>
-            إضافة منتج
-          </button>
-        </div>
-
-        <table style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          color: "#fff"
-        }}>
-          <thead>
-            <tr style={{
-              background: "linear-gradient(135deg, #32CD32, #87CEEB)",
-              color: "#000"
-            }}>
-              <th style={{
-                padding: "15px",
-                textAlign: "right",
-                borderRadius: "8px 0 0 8px"
-              }}>
-                صورة المنتج
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right"
-              }}>
-                الاسم
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right"
-              }}>
-                الفئة
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right"
-              }}>
-                السعر
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right"
-              }}>
-                المخزون
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right",
-                borderRadius: "0 8px 8px 0"
-              }}>
-                إجراءات
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredProducts.map((p, index) => (
-              <tr key={p.id} style={{
-                borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-                transition: "background 0.3s ease"
-              }}
-              onMouseEnter={(e) => {
-                e.target.parentElement.style.background = "rgba(255, 255, 255, 0.05)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.parentElement.style.background = "transparent";
-              }}
-              >
-                <td style={{ padding: "15px", textAlign: "center" }}>
-                  <div style={{
-                    width: "50px",
-                    height: "50px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "8px",
-                    overflow: "hidden",
-                    background: "rgba(255, 255, 255, 0.1)",
-                    margin: "0 auto"
-                  }}>
-                    {isImageUrl(p.image) ? (
-                      <img
-                        src={p.image}
-                        alt={p.name}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          borderRadius: "8px"
-                        }}
-                        onError={(e) => {
-                          e.target.style.display = "none";
-                          e.target.nextSibling.style.display = "flex";
-                        }}
-                      />
-                    ) : (
+      {/* Products Table */}
+      <div className="modern-card">
+        {filteredProducts.length > 0 ? (
+          <div className="table-responsive">
+            <table className="modern-table">
+              <thead>
+                <tr>
+                  <th>الصورة</th>
+                  <th>اسم المنتج</th>
+                  <th>الفئة</th>
+                  <th>السعر</th>
+                  <th>المخزون</th>
+                  <th>الحالة</th>
+                  <th>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProducts.map((product) => (
+                  <tr key={product.id}>
+                    <td style={{ textAlign: "center" }}>
                       <div style={{
-                        fontSize: "24px",
+                        width: "50px",
+                        height: "50px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        width: "100%",
-                        height: "100%"
+                        fontSize: "24px",
+                        background: "rgba(255, 255, 255, 0.1)",
+                        borderRadius: "8px"
                       }}>
-                        {p.image}
+                        {isImageUrl(product.image) ? (
+                          <img 
+                            src={product.image} 
+                            alt={product.name}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              borderRadius: "8px"
+                            }}
+                          />
+                        ) : (
+                          product.image
+                        )}
                       </div>
-                    )}
-                    {/* Fallback emoji */}
-                    <div style={{
-                      fontSize: "24px",
-                      display: isImageUrl(p.image) ? "none" : "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "100%",
-                      height: "100%"
-                    }}>
-                      📦
-                    </div>
-                  </div>
-                </td>
-                <td style={{ padding: "15px" }}>{p.name}</td>
-                <td style={{ padding: "15px" }}>
-                  <span style={{
-                    padding: "5px 12px",
-                    background: "linear-gradient(135deg, #32CD32, #87CEEB)",
-                    color: "#000",
-                    borderRadius: "15px",
-                    fontSize: "12px",
-                    fontWeight: "bold"
-                  }}>
-                    {p.category}
-                  </span>
-                </td>
-                <td style={{ padding: "15px" }}>
-                  <span style={{
-                    color: "#32CD32",
-                    fontWeight: "bold"
-                  }}>
-                    {p.price} ريال
-                  </span>
-                </td>
-                <td style={{ padding: "15px" }}>
-                  <span style={{
-                    padding: "5px 12px",
-                    background: p.stock > 20 ? "linear-gradient(135deg, #32CD32, #28a745)" : "linear-gradient(135deg, #ff4444, #cc0000)",
-                    color: "#fff",
-                    borderRadius: "15px",
-                    fontSize: "12px",
-                    fontWeight: "bold"
-                  }}>
-                    {p.stock}
-                  </span>
-                </td>
-                <td style={{ padding: "15px" }}>
-                  <button 
-                    onClick={() => handleEditProduct(p)}
-                    style={{
-                      background: "linear-gradient(135deg, #32CD32, #87CEEB)",
-                      color: "#000",
-                      border: "none",
-                      borderRadius: "6px",
-                      margin: "0 4px",
-                      padding: "8px 15px",
-                      cursor: "pointer",
-                      fontSize: "12px",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    تعديل
-                  </button>
-                  <button 
-                    onClick={() => handleDeleteProduct(p.id)}
-                    style={{
-                      background: "linear-gradient(135deg, #ff4444, #cc0000)",
-                      color: "#fff",
-                      border: "none",
-                      borderRadius: "6px",
-                      margin: "0 4px",
-                      padding: "8px 15px",
-                      cursor: "pointer",
-                      fontSize: "12px",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    حذف
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        {filteredProducts.length === 0 && (
-          <div style={{
-            textAlign: "center",
-            padding: "40px",
-            color: "#888"
-          }}>
-            لا توجد منتجات تطابق البحث
+                    </td>
+                    <td style={{ fontWeight: "600" }}>{product.name}</td>
+                    <td>
+                      <span className="status-badge active">
+                        {product.category}
+                      </span>
+                    </td>
+                    <td style={{ fontWeight: "600", color: "#32CD32" }}>
+                      {product.price} ريال
+                    </td>
+                    <td>
+                      <span style={{
+                        color: product.stock > 10 ? "#32CD32" : product.stock > 0 ? "#ffa500" : "#ff4444",
+                        fontWeight: "600"
+                      }}>
+                        {product.stock}
+                      </span>
+                    </td>
+                    <td>
+                      <span className={`status-badge ${product.stock > 10 ? 'active' : product.stock > 0 ? 'pending' : 'inactive'}`}>
+                        {product.stock > 10 ? "متوفر" : product.stock > 0 ? "منخفض" : "نفذ"}
+                      </span>
+                    </td>
+                    <td>
+                      <div className="action-buttons-container">
+                        <button 
+                          onClick={() => handleEditProduct(product)}
+                          className="modern-button info"
+                          style={{ padding: "8px 12px", fontSize: "12px" }}
+                        >
+                          ✏️ تعديل
+                        </button>
+                        <button 
+                          onClick={() => handleDeleteProduct(product.id)}
+                          className="modern-button danger"
+                          style={{ padding: "8px 12px", fontSize: "12px" }}
+                        >
+                          🗑️ حذف
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="empty-state">
+            <div className="empty-state-icon">📦</div>
+            <div className="empty-state-title">لا توجد منتجات</div>
+            <div className="empty-state-description">
+              {searchTerm || selectedCategory !== "الكل" 
+                ? "لا توجد منتجات تطابق البحث" 
+                : "ابدأ بإضافة منتجات جديدة إلى متجرك"
+              }
+            </div>
+            {!searchTerm && selectedCategory === "الكل" && (
+              <button 
+                onClick={handleAddProduct}
+                className="modern-button mt-20"
+              >
+                إضافة منتج جديد
+              </button>
+            )}
           </div>
         )}
       </div>

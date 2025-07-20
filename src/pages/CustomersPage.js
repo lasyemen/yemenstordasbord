@@ -246,38 +246,20 @@ export default function CustomersPage() {
         />
       )}
 
-      <div style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginBottom: "30px",
-        flexWrap: "wrap",
-        gap: "15px"
-      }}>
+      {/* Page Header */}
+      <div className="page-header d-flex justify-between align-center flex-wrap gap-15 mb-30">
         <h1 style={{
           color: "#fff",
           fontSize: "28px",
-          margin: 0
+          margin: 0,
+          fontWeight: "700"
         }}>
           إدارة العملاء
         </h1>
         <button 
           onClick={handleAddCustomer}
-          className="add-product-btn"
+          className="modern-button"
           style={{
-            background: "linear-gradient(135deg, #32CD32, #87CEEB)",
-            color: "#000",
-            border: "none",
-            padding: "15px 30px",
-            borderRadius: "12px",
-            fontWeight: "bold",
-            fontSize: "16px",
-            cursor: "pointer",
-            transition: "all 0.3s ease",
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            boxShadow: "0 4px 15px rgba(50, 205, 50, 0.3)",
             minWidth: "200px",
             justifyContent: "center"
           }}
@@ -288,64 +270,30 @@ export default function CustomersPage() {
       </div>
 
       {/* Statistics Cards */}
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-        gap: "20px",
-        marginBottom: "30px"
-      }}>
-        <div style={{
-          background: "linear-gradient(135deg, #32CD32, #28a745)",
-          borderRadius: "15px",
-          padding: "20px",
-          color: "#000",
-          textAlign: "center"
-        }}>
-          <h3 style={{ margin: 0, fontSize: "14px", opacity: 0.8 }}>إجمالي العملاء</h3>
-          <h2 style={{ margin: "10px 0", fontSize: "32px", fontWeight: "bold" }}>
+      <div className="responsive-grid mb-30">
+        <div className="modern-card">
+          <h3 style={{ margin: "0 0 10px 0", fontSize: "14px", opacity: 0.8 }}>إجمالي العملاء</h3>
+          <h2 style={{ margin: "10px 0", fontSize: "32px", fontWeight: "bold", color: "#32CD32" }}>
             {customers.length}
           </h2>
         </div>
-        <div style={{
-          background: "linear-gradient(135deg, #87CEEB, #4682B4)",
-          borderRadius: "15px",
-          padding: "20px",
-          color: "#fff",
-          textAlign: "center"
-        }}>
-          <h3 style={{ margin: 0, fontSize: "14px", opacity: 0.8 }}>إجمالي الطلبات</h3>
-          <h2 style={{ margin: "10px 0", fontSize: "32px", fontWeight: "bold" }}>
+        <div className="modern-card">
+          <h3 style={{ margin: "0 0 10px 0", fontSize: "14px", opacity: 0.8 }}>إجمالي الطلبات</h3>
+          <h2 style={{ margin: "10px 0", fontSize: "32px", fontWeight: "bold", color: "#87CEEB" }}>
             {customers.reduce((sum, c) => sum + c.totalOrders, 0)}
           </h2>
         </div>
-        <div style={{
-          background: "linear-gradient(135deg, #ffa500, #ff8c00)",
-          borderRadius: "15px",
-          padding: "20px",
-          color: "#fff",
-          textAlign: "center"
-        }}>
-          <h3 style={{ margin: 0, fontSize: "14px", opacity: 0.8 }}>إجمالي المبيعات</h3>
-          <h2 style={{ margin: "10px 0", fontSize: "32px", fontWeight: "bold" }}>
+        <div className="modern-card">
+          <h3 style={{ margin: "0 0 10px 0", fontSize: "14px", opacity: 0.8 }}>إجمالي المبيعات</h3>
+          <h2 style={{ margin: "10px 0", fontSize: "32px", fontWeight: "bold", color: "#ffa500" }}>
             {customers.reduce((sum, c) => sum + c.totalSpent, 0).toLocaleString()} ريال
           </h2>
         </div>
       </div>
 
       {/* Search Section */}
-      <div style={{
-        background: "rgba(255, 255, 255, 0.05)",
-        borderRadius: "15px",
-        padding: "20px",
-        marginBottom: "20px",
-        border: "1px solid rgba(255, 255, 255, 0.1)"
-      }}>
-        <div style={{
-          display: "flex",
-          gap: "15px",
-          flexWrap: "wrap",
-          marginBottom: "15px"
-        }}>
+      <div className="modern-card mb-20">
+        <div className="search-filter-container">
           {/* Search Input */}
           <div style={{ flex: 1, minWidth: "200px" }}>
             <input
@@ -353,17 +301,7 @@ export default function CustomersPage() {
               placeholder="البحث في العملاء..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "12px 15px",
-                border: "2px solid",
-                borderImage: "linear-gradient(135deg, #32CD32, #87CEEB) 1",
-                borderRadius: "8px",
-                background: "transparent",
-                color: "#fff",
-                fontSize: "14px",
-                textAlign: "right"
-              }}
+              className="modern-input"
             />
           </div>
 
@@ -388,23 +326,16 @@ export default function CustomersPage() {
             padding: "10px",
             background: "rgba(50, 205, 50, 0.1)",
             borderRadius: "8px",
-            border: "1px solid rgba(50, 205, 50, 0.3)"
+            border: "1px solid rgba(50, 205, 50, 0.3)",
+            marginTop: "15px"
           }}>
             <span style={{ color: "#32CD32", fontSize: "14px" }}>
               تم تحديد {selectedCustomers.length} عميل
             </span>
             <button
               onClick={handleBulkDelete}
-              style={{
-                background: "linear-gradient(135deg, #ff4444, #cc0000)",
-                color: "#fff",
-                border: "none",
-                padding: "8px 15px",
-                borderRadius: "6px",
-                cursor: "pointer",
-                fontSize: "12px",
-                fontWeight: "bold"
-              }}
+              className="modern-button danger"
+              style={{ padding: "8px 15px", fontSize: "12px" }}
             >
               حذف المحددين
             </button>
@@ -413,186 +344,100 @@ export default function CustomersPage() {
       </div>
 
       {/* Customers Table */}
-      <div style={{
-        background: "rgba(255, 255, 255, 0.05)",
-        borderRadius: "15px",
-        padding: "25px",
-        border: "1px solid rgba(255, 255, 255, 0.1)"
-      }}>
-        <table style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          color: "#fff"
-        }}>
-          <thead>
-            <tr style={{
-              background: "linear-gradient(135deg, #32CD32, #87CEEB)",
-              color: "#000"
-            }}>
-              <th style={{
-                padding: "15px",
-                textAlign: "center",
-                borderRadius: "8px 0 0 8px"
-              }}>
-                <input
-                  type="checkbox"
-                  checked={selectedCustomers.length === filteredCustomers.length && filteredCustomers.length > 0}
-                  onChange={handleSelectAll}
-                  style={{ transform: "scale(1.2)" }}
-                />
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right"
-              }}>
-                الاسم
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right"
-              }}>
-                الهاتف
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right"
-              }}>
-                البريد الإلكتروني
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right"
-              }}>
-                عدد الطلبات
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right"
-              }}>
-                إجمالي المشتريات
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right"
-              }}>
-                تاريخ التسجيل
-              </th>
-              <th style={{
-                padding: "15px",
-                textAlign: "right",
-                borderRadius: "0 8px 8px 0"
-              }}>
-                إجراءات
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredCustomers.map((customer) => (
-              <tr key={customer.id} style={{
-                borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-                transition: "background 0.3s ease"
-              }}
-              onMouseEnter={(e) => {
-                e.target.parentElement.style.background = "rgba(255, 255, 255, 0.05)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.parentElement.style.background = "transparent";
-              }}
+      <div className="modern-card">
+        {filteredCustomers.length > 0 ? (
+          <div className="table-responsive">
+            <table className="modern-table">
+              <thead>
+                <tr>
+                  <th style={{ textAlign: "center" }}>
+                    <input
+                      type="checkbox"
+                      checked={selectedCustomers.length === filteredCustomers.length && filteredCustomers.length > 0}
+                      onChange={handleSelectAll}
+                      style={{ transform: "scale(1.2)" }}
+                    />
+                  </th>
+                  <th>الاسم</th>
+                  <th>الهاتف</th>
+                  <th>البريد الإلكتروني</th>
+                  <th>عدد الطلبات</th>
+                  <th>إجمالي المشتريات</th>
+                  <th>تاريخ التسجيل</th>
+                  <th>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredCustomers.map((customer) => (
+                  <tr key={customer.id}>
+                    <td style={{ textAlign: "center" }}>
+                      <input
+                        type="checkbox"
+                        checked={selectedCustomers.includes(customer.id)}
+                        onChange={() => handleSelectCustomer(customer.id)}
+                        style={{ transform: "scale(1.2)" }}
+                      />
+                    </td>
+                    <td style={{ fontWeight: "600" }}>{customer.name}</td>
+                    <td>{customer.phone}</td>
+                    <td>{customer.email}</td>
+                    <td>
+                      <span className="status-badge active">
+                        {customer.totalOrders}
+                      </span>
+                    </td>
+                    <td style={{ fontWeight: "600", color: "#32CD32" }}>
+                      {customer.totalSpent.toLocaleString()} ريال
+                    </td>
+                    <td>{customer.registrationDate}</td>
+                    <td>
+                      <div className="action-buttons-container">
+                        <button 
+                          onClick={() => handleViewCustomerDetails(customer)}
+                          className="modern-button info"
+                          style={{ padding: "8px 12px", fontSize: "12px" }}
+                        >
+                          👁️ تفاصيل
+                        </button>
+                        <button 
+                          onClick={() => handleEditCustomer(customer)}
+                          className="modern-button info"
+                          style={{ padding: "8px 12px", fontSize: "12px" }}
+                        >
+                          ✏️ تعديل
+                        </button>
+                        <button 
+                          onClick={() => handleDeleteCustomer(customer.id)}
+                          className="modern-button danger"
+                          style={{ padding: "8px 12px", fontSize: "12px" }}
+                        >
+                          🗑️ حذف
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="empty-state">
+            <div className="empty-state-icon">👤</div>
+            <div className="empty-state-title">لا يوجد عملاء</div>
+            <div className="empty-state-description">
+              {searchTerm 
+                ? "لا يوجد عملاء تطابق البحث" 
+                : "ابدأ بإضافة عملاء جدد إلى قاعدة البيانات"
+              }
+            </div>
+            {!searchTerm && (
+              <button 
+                onClick={handleAddCustomer}
+                className="modern-button mt-20"
               >
-                <td style={{ padding: "15px", textAlign: "center" }}>
-                  <input
-                    type="checkbox"
-                    checked={selectedCustomers.includes(customer.id)}
-                    onChange={() => handleSelectCustomer(customer.id)}
-                    style={{ transform: "scale(1.2)" }}
-                  />
-                </td>
-                <td style={{ padding: "15px" }}>{customer.name}</td>
-                <td style={{ padding: "15px" }}>{customer.phone}</td>
-                <td style={{ padding: "15px" }}>{customer.email}</td>
-                <td style={{ padding: "15px" }}>
-                  <span style={{
-                    padding: "5px 12px",
-                    background: "linear-gradient(135deg, #32CD32, #87CEEB)",
-                    color: "#000",
-                    borderRadius: "15px",
-                    fontSize: "12px",
-                    fontWeight: "bold"
-                  }}>
-                    {customer.totalOrders}
-                  </span>
-                </td>
-                <td style={{ padding: "15px" }}>
-                  <span style={{
-                    color: "#32CD32",
-                    fontWeight: "bold"
-                  }}>
-                    {customer.totalSpent.toLocaleString()} ريال
-                  </span>
-                </td>
-                <td style={{ padding: "15px" }}>{customer.registrationDate}</td>
-                <td style={{ padding: "15px" }}>
-                  <button 
-                    onClick={() => handleViewCustomerDetails(customer)}
-                    style={{
-                      background: "linear-gradient(135deg, #87CEEB, #4682B4)",
-                      color: "#fff",
-                      border: "none",
-                      borderRadius: "6px",
-                      margin: "0 4px",
-                      padding: "8px 15px",
-                      cursor: "pointer",
-                      fontSize: "12px",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    تفاصيل
-                  </button>
-                  <button 
-                    onClick={() => handleEditCustomer(customer)}
-                    style={{
-                      background: "linear-gradient(135deg, #32CD32, #87CEEB)",
-                      color: "#000",
-                      border: "none",
-                      borderRadius: "6px",
-                      margin: "0 4px",
-                      padding: "8px 15px",
-                      cursor: "pointer",
-                      fontSize: "12px",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    تعديل
-                  </button>
-                  <button 
-                    onClick={() => handleDeleteCustomer(customer.id)}
-                    style={{
-                      background: "linear-gradient(135deg, #ff4444, #cc0000)",
-                      color: "#fff",
-                      border: "none",
-                      borderRadius: "6px",
-                      margin: "0 4px",
-                      padding: "8px 15px",
-                      cursor: "pointer",
-                      fontSize: "12px",
-                      fontWeight: "bold"
-                    }}
-                  >
-                    حذف
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        {filteredCustomers.length === 0 && (
-          <div style={{
-            textAlign: "center",
-            padding: "40px",
-            color: "#888"
-          }}>
-            لا يوجد عملاء تطابق البحث
+                إضافة عميل جديد
+              </button>
+            )}
           </div>
         )}
       </div>
