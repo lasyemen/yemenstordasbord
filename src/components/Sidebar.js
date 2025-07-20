@@ -210,9 +210,23 @@ export default function Sidebar() {
                 {!isCollapsed && <span>الفئات</span>}
               </Link>
             </li>
+
+            {/* Staff Management Section */}
+            <li style={{ marginBottom: "15px" }}>
+              <div style={{
+                color: "#32CD32",
+                fontSize: "14px",
+                fontWeight: "bold",
+                marginBottom: "10px",
+                padding: "0 15px",
+                opacity: 0.8
+              }}>
+                {!isCollapsed && "إدارة الموظفين"}
+              </div>
+            </li>
             <li style={{ marginBottom: "15px" }}>
               <Link 
-                to="/users" 
+                to="/staff" 
                 style={{ 
                   color: "#fff", 
                   textDecoration: "none",
@@ -233,7 +247,47 @@ export default function Sidebar() {
                 }}
               >
                 <span style={{ marginLeft: "10px" }}>👥</span>
-                {!isCollapsed && <span>المستخدمين</span>}
+                {!isCollapsed && <span>إدارة الموظفين</span>}
+              </Link>
+            </li>
+
+            {/* Customers Management Section */}
+            <li style={{ marginBottom: "15px" }}>
+              <div style={{
+                color: "#32CD32",
+                fontSize: "14px",
+                fontWeight: "bold",
+                marginBottom: "10px",
+                padding: "0 15px",
+                opacity: 0.8
+              }}>
+                {!isCollapsed && "إدارة العملاء"}
+              </div>
+            </li>
+            <li style={{ marginBottom: "15px" }}>
+              <Link 
+                to="/customers" 
+                style={{ 
+                  color: "#fff", 
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "12px 15px",
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                  fontSize: "16px"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = "linear-gradient(135deg, #32CD32, #87CEEB)";
+                  e.target.style.color = "#000";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = "transparent";
+                  e.target.style.color = "#fff";
+                }}
+              >
+                <span style={{ marginLeft: "10px" }}>👤</span>
+                {!isCollapsed && <span>إدارة العملاء</span>}
               </Link>
             </li>
             <li style={{ marginBottom: "15px" }}>
